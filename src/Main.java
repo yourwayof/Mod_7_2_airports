@@ -19,10 +19,12 @@ public class Main {
         //System.out.println(svo.getAllAircrafts());
         //System.out.println(svo.getTerminals());
 
-        svo.getTerminals().stream().forEach(e1 -> e1.getFlights().stream()
-                .filter(o1 -> o1.getDate().after(date) && o1.getDate().before(currentDate) && o1.getType().equals(Flight.Type.DEPARTURE))
-                .forEach(e2 -> System.out.println(e2.getAircraft() + " " + e2.getDate().getHours() + ":" + e2.getDate().getMinutes())));
-
+        svo.getTerminals().stream()
+                .forEach(e1 -> e1.getFlights().stream()
+                .filter(o1 -> o1.getDate().after(date))
+                .filter(o1 -> o1.getDate().before(currentDate))
+                .filter(o1 -> o1.getType().equals(Flight.Type.DEPARTURE))
+                .forEach(e2 -> System.out.println(e2.toString())));
 
     }
 }
